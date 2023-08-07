@@ -1,0 +1,11 @@
+python manage.py makemigrations
+python manage.py migrate
+
+
+
+
+class Advertisement(models.Model):
+    # Определение полей модели
+
+    def __str__(self):
+        return f"Advertisement(id={self.id}, title={self.title}, price={self.price})"
