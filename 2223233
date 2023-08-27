@@ -1,0 +1,21 @@
+1
+from django import forms
+from .models import YourModel
+class YourModelForm(forms.ModelForm):
+class Meta:
+    model = YourModel
+    fields = 'all'
+    widgets = {
+        'field1': forms.TextInput(attrs={'class': 'your-css-class'}),
+        'field2': forms.TextInput(attrs={'class': 'your-css-class'}),
+
+2
+from django import forms
+class AdForm(forms.Form):
+title = forms.CharField()
+
+def clean_title(self):
+    title = self.cleaned_data.get('title')
+    if title and title.startswith('?'):
+        raise forms.ValidationError("Title cannot start with a question mark.")
+    return title
